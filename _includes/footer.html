@@ -1,0 +1,50 @@
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <a href="http://medialab-prado.es" target="_blank"><img class="img-responsive" width="100px" src="{{"/img/medialablogo.png" | prepend: site.url }}"></a>
+                        <a href="https://twitter.com/datalabx" target="_blank"><img class="img-responsive" width="100px" src="{{"/img/datalablogo.png" | prepend: site.url }}"></a>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <b>Compártelo</b>
+                        <ul class="list-inline">
+                            {% for network in site.social %}
+                            <li>
+                                <a href="{{ network.url | replace: '[url]',site.url }}" class="btn-social btn-outline" target="_blank"><i class="fa fa-fw fa-{{ network.title }}"></i></a>
+                            </li>
+		                    {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                      <div class="nav navbar-inverse pull-right">
+                      <ul class="nav navbar-nav">
+                        <li><a href="{{site.url}}/contacto">Contáctanos</a></li>
+                        <li><a href="{{site.url}}/colabora">Colabora</a></li>
+                      </ul>
+                    </div>
+                      <div class="pull-right">
+                      Copyright &copy; {{ site.footer.copyright }} 20{{ site.time | date: '%y' }}
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll visible-xs visible-sm">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-101255297-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments)};
+      gtag('js', new Date());
+
+      gtag('config', 'UA-101255297-2');
+    </script>
