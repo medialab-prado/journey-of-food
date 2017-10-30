@@ -82,7 +82,11 @@ function graficaImportExport(container, path) {
 
   d3.csv(path, parseRow, function(error, data) {
     mdata = data;
-    if (error) throw error;
+    if (error) {
+      $(container).empty();
+      $(container).append("Sin información");
+      return;
+    }
     maxImport = d3.max(data, function(d) {
       return parseInt(d.Importado);
     });
@@ -225,6 +229,12 @@ function dibujaGrafico(container, ficheroDeDatos) {
   if (ficheroDeDatos === undefined) ficheroDeDatos = "data/grafico.csv";
 
   d3.csv(ficheroDeDatos, function(error, data) {
+    if (error) {
+      $(container).empty();
+      $(container).append("Sin información");
+      return;
+    }
+    
     var mdata = data;
     var numbers = [];
     mdata.forEach(function(el) {
@@ -358,9 +368,8 @@ function tiempoCultivo(producto,container,path){
 
   d3.csv(path, function(datos) {
     var meses = datos
-      .filter(function(d) { return d.PRODUCTO.toLowerCase() == producto; })[0].MESES;
+      .filter(function(d) { return d.PRODUCTO.replace(/ /g,"-").toLowerCase() == producto; })[0].MESES;
     meses = meses != 'NA' ? +meses : 0;
-    console.log(meses);
 
     chartWrapper.selectAll('.time-line')
       .data(d3.range(12))

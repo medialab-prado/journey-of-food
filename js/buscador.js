@@ -31,20 +31,30 @@ $(document).ready(function() {
     }
   });
 
-  filterProducts();
+  $(".grid").imagesLoaded(function(){
+    var $loader = $(".loader");
+    var $items = $(".grid");
+    $loader.show();
+    $items.hide();
+    filterProducts();
+    $items.show();
+    $loader.hide();
+
+  });
 
   function organizeProducts() {
     var $grid = $(".grid").isotope({
       itemSelector: ".portfolio-item",
       getSortData: {
         id: ".id parseInt",
-        temporada: ".temporada parseInt"
+        temporada: ".temporada parseInt",
+        category: ".category",
       },
       percentPosition: true,
       masonry: {
         columnWidth: ".col-sm-2"
       },
-      sortBy: ["temporada", "id"]
+      sortBy: ["temporada","category" ,"id"]
     });
     $grid.isotope("updateSortData").isotope();
   }
@@ -70,9 +80,9 @@ $(document).ready(function() {
         var icon = $(".product-"+id+" .icon-temporada");
 
         product.removeClass(
-          "temporada inicio-temporada fin-temporada fuera-temporada fa-warning"
+          "temporada inicio-temporada fin-temporada fuera-temporada fa-hourglass-half"
         );
-        icon.removeClass("fa-warning");
+        icon.removeClass("fa-hourglass-half");
         switch (calendario[i][month.toUpperCase()]) {
           case "X":
             product.addClass("en-temporada");
@@ -83,12 +93,12 @@ $(document).ready(function() {
           case "I":
             product.addClass("inicio-temporada");
             season.text(2);
-            icon.addClass("fa-warning");
+            icon.addClass("fa-hourglass-half");
             break;
           case "F":
             product.addClass("fin-temporada");
             season.text(3);
-            icon.addClass("fa-warning");
+            icon.addClass("fa-hourglass-half");
             break;
           default:
             product.addClass("fuera-temporada");

@@ -195,6 +195,7 @@ section.success {
   margin: 0;
 }
 #portfolio .portfolio-item img {
+  width: 165px;
 }
 #portfolio * {
   z-index: 2;
@@ -214,6 +215,19 @@ section.success {
 #product-page .month-filter li{
   background-color: #e5e5e5;
 }
+#product-page .month-filter .active{
+  background: none;
+  color: inherit;
+  text-decoration: underline;
+  font-weight: bold;
+  padding: 0;
+}
+#product-page .month-filter .month:hover{
+  background: none;
+  color: inherit;
+  padding: 0;
+}
+
 #product-page li.inicio-temporada{
   background-color: #C1DA84;
   opacity: 1;
@@ -503,7 +517,7 @@ footer .footer-below {
   margin-top: 0.5em;
 }
 
-.id, .temporada {
+.id, .temporada,.category {
   display: none;
 }
 .icon-temporada{
@@ -555,6 +569,7 @@ footer .footer-below {
 }
 .colaborador {
   text-align: center;
+  margin-top: 1.5em;
 }
 .colaborador img {
   padding-bottom: 1em;
@@ -574,7 +589,6 @@ footer .footer-below {
   display: none;
 }
 .chart {
-  text-align: center;
 }
 .chart div {
   font: 14px sans-serif;
@@ -651,7 +665,13 @@ div.grafica-barras{
     border-radius: 4px;
 
 }
-
+.loader{
+  display: block;
+  text-align: center;
+}
+.grid{
+  display: none;
+}
 @media(min-width:768px) {
   header .container {
     padding-top: 11em;
@@ -685,6 +705,7 @@ div.grafica-barras{
     margin: 0 0 30px;
   }
   #portfolio .portfolio-item img {
+
   }
 }
 
